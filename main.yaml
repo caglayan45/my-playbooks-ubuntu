@@ -1,0 +1,39 @@
+  - name: PROJE GEREKLILIKLERININ KURULUMU
+    hosts: all
+    become: yes
+    become_method: sudo
+    roles:
+      - requirements
+
+  - name: DOCKER KURULUMU
+    hosts: all
+    become: yes
+    become_method: sudo
+    roles:
+      - docker-install
+
+  - name: DOCKER RUN
+    hosts: all
+    become: yes
+    become_method: sudo
+    become_user: ec2-user
+    roles:
+      - docker-run
+
+  - name: YONETICI NODE INIT SWARM
+    hosts: manager
+    roles:
+      - swarm-init
+
+  - name: WORKER NODES KATILIMI
+    hosts: workers
+    roles:
+      - swarm-add-worker
+
+# - name: DOCKER VE PAKETLERINI KALDIR
+#   hosts: all
+#   become: true
+# #  become_user: ec2-user
+#   become_method: sudo
+#   roles:
+#     - docker-remove

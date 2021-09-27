@@ -1,0 +1,37 @@
+---
+  - name: CURL KURULUMU
+    apt:
+      name: curl
+      state: present
+
+  - name: GIT KURULUMU
+    apt:
+      name: git
+      state: present
+      update_cache: yes
+
+  - name: GOLANG 1.15.6 INDIR
+    get_url:
+      url: https://golang.org/dl/go1.15.6.linux-amd64.tar.gz
+      dest: /tmp/go1.15.6.linux-amd64.tar.gz
+
+  - name: EXTRACT GO
+    command: tar xvf /tmp/go1.15.6.linux-amd64.tar.gz -C /usr/local
+
+  - name: UPDATE PROFILE (GO)
+    copy: content="export GO_HOME=/usr/local/go \n" dest=/etc/profile.d/go.sh
+  - lineinfile:
+      path: /etc/profile.d/go.sh
+      line: 'export PATH=${GO_HOME}/bin:${PATH}'
+
+  - name: SOURCE PROFILE (GO)
+    shell: source /etc/profile.d/go.sh
+
+  - name: NODEJS SETUP 10.X
+    shell: "curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -"
+
+  - name: NODEJS KURULUMU
+    apt:
+      name: nodejs
+      state: present
+
