@@ -8,15 +8,15 @@
     apt:
       name: git
       state: present
-      update_cache: yes
-
-  - name: GOLANG 1.15.6 INDIR
+      update_cache: yes	
+	
+  - name: GOLANG 1.17.1 INDIR
     get_url:
-      url: https://golang.org/dl/go1.15.6.linux-amd64.tar.gz
-      dest: /tmp/go1.15.6.linux-amd64.tar.gz
+      url: https://golang.org/dl/go1.17.1.linux-amd64.tar.gz
+      dest: /tmp/go1.17.1.linux-amd64.tar.gz
 
   - name: EXTRACT GO
-    command: tar xvf /tmp/go1.15.6.linux-amd64.tar.gz -C /usr/local
+    command: tar xvf /tmp/go1.17.1.linux-amd64.tar.gz -C /usr/local
 
   - name: UPDATE PROFILE (GO)
     copy: content="export GO_HOME=/usr/local/go \n" dest=/etc/profile.d/go.sh
@@ -27,8 +27,8 @@
   - name: SOURCE PROFILE (GO)
     shell: source /etc/profile.d/go.sh
 
-  - name: NODEJS SETUP 10.X
-    shell: "curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -"
+  - name: NODEJS SETUP 12.X
+    shell: "curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -"
 
   - name: NODEJS KURULUMU
     apt:

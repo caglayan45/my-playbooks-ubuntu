@@ -1,3 +1,12 @@
+   - name: UPDATES
+   hosts: all
+   become: yes
+   become_method: sudo
+   tasks:
+     - name: Updates
+       command: sudo apt update -y
+       ignore_errors: true
+       
   - name: PROJE GEREKLILIKLERININ KURULUMU
     hosts: all
     become: yes

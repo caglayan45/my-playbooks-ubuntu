@@ -6,11 +6,8 @@
         update_cache: yes
       vars:
         packages:
-        - python-pip
-        - yum-utils
         - device-mapper-persistent-data
         - lvm2
-        - amazon-linux-extras
         - ntp
         - tcpdump
         - wget
@@ -24,7 +21,6 @@
       vars:
         packages:
         - python3.8
-        - ansible
         - docker
 
     - name: DOCKER CE BASLAT
