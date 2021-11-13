@@ -1,34 +1,34 @@
 ---
-  - name: CURL KURULUMU
-    apt:
-      name: curl
-      state: present
+#  - name: CURL KURULUMU
+#    apt:
+#      name: curl
+#      state: present
 
-  - name: GIT KURULUMU
-    apt:
-      name: git
-      state: present
-      update_cache: yes	
-	
-  - name: GOLANG 1.17.1 INDIR
-    get_url:
-      url: https://golang.org/dl/go1.17.1.linux-amd64.tar.gz
-      dest: /tmp/go1.17.1.linux-amd64.tar.gz
+#  - name: GIT KURULUMU
+#    apt:
+#      name: git
+#      state: present
+#      update_cache: yes	
 
-  - name: EXTRACT GO
-    command: tar xvf /tmp/go1.17.1.linux-amd64.tar.gz -C /usr/local
+#  - name: GOLANG 1.17.1 INDIR
+#    get_url:
+#      url: https://golang.org/dl/go1.17.1.linux-amd64.tar.gz
+#      dest: /tmp/go1.17.1.linux-amd64.tar.gz
 
-  - name: UPDATE PROFILE (GO)
-    copy: content="export GO_HOME=/usr/local/go \n" dest=/etc/profile.d/go.sh
-  - lineinfile:
-      path: /etc/profile.d/go.sh
-      line: 'export PATH=${GO_HOME}/bin:${PATH}'
+#  - name: EXTRACT GO
+#    command: tar xvf /tmp/go1.17.1.linux-amd64.tar.gz -C /usr/local
 
-  - name: SOURCE PROFILE (GO)
-    shell: source /etc/profile.d/go.sh
+#  - name: UPDATE PROFILE (GO)
+#    copy: content="export GO_HOME=/usr/local/go \n" dest=/etc/profile.d/go.sh
+#  - lineinfile:
+#      path: /etc/profile.d/go.sh
+#      line: 'export PATH=${GO_HOME}/bin:${PATH}'
 
-  - name: NODEJS SETUP 12.X
-    shell: "curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -"
+#  - name: SOURCE PROFILE (GO)
+#    shell: source /etc/profile.d/go.sh
+
+#  - name: NODEJS SETUP 12.X
+#    shell: "curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -"
 
   - name: NODEJS KURULUMU
     apt:

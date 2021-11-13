@@ -1,36 +1,35 @@
 ---
-    - name: PAKET KURULUMLARI
-      apt:
-        name: "{{ packages }}"
-        state: latest
-        update_cache: yes
-      vars:
-        packages:
-        - device-mapper-persistent-data
-        - lvm2
-        - ntp
-        - tcpdump
-        - wget
-        - openssl
+#    - name: PAKET KURULUMLARI
+#      apt:
+#        name: "{{ packages }}"
+#        state: latest
+#        update_cache: yes
+#      vars:
+#        packages:
+#        - lvm2
+#        - ntp
+#        - tcpdump
+#        - wget
+#        - openssl
 
-    - name: PAKET KURULUMLARI (Python, Ansible, Docker)
-      apt:
-        name: "{{ packages }}"
-        state: present
-        update_cache: yes
-      vars:
-        packages:
-        - python3.8
-        - docker
+#    - name: PAKET KURULUMLARI (Python, Ansible, Docker)
+#      apt:
+#        name: "{{ packages }}"
+#        state: present
+#        update_cache: yes
+#      vars:
+#        packages:
+#        - python3.8
+#        - docker.io
 
-    - name: DOCKER CE BASLAT
-      service:
-        name: docker
-        state: started
-        enabled: yes
+#    - name: DOCKER CE BASLAT
+#      service:
+#        name: docker
+#        state: started
+#        enabled: yes
 
-    - name: PIP3 YUKSELTMESI
-      shell: "python3.8 -m pip install pip --upgrade"
+#    - name: PIP3 YUKSELTMESI
+#      shell: "python3.8 -m pip install pip --upgrade"
 
     - name: PIP PAKET KURULUMLARI
       pip:
